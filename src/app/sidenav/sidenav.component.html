@@ -6,7 +6,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/maps" routerLinkActive="active">Map</a>
       <a mat-list-item routerLink="/events" routerLinkActive="active">Events</a>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a mat-list-item routerLink="/ports" routerLinkActive="active">Ports</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +20,7 @@
       <a routerLink="/maps" routerLinkActive="active" class="nav-link" *ngIf="!(isHandset | async)!.matches">Map</a>
       <a routerLink="/events" routerLinkActive="active" class="nav-link"
         *ngIf="!(isHandset | async)!.matches">Events</a>
-      <a routerLink="/dashboard" routerLinkActive="active" class="nav-link" *ngIf="!(isHandset | async)!.matches">Dashboard</a>
+      <a routerLink="/ports" routerLinkActive="active" class="nav-link" *ngIf="!(isHandset | async)!.matches">Ports</a>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

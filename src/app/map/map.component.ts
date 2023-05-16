@@ -59,5 +59,6 @@ export class MapComponent {
         this.popup.overlay.setPosition(event.coordinate);
       });
     });
+
   }
 }
