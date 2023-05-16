@@ -1,0 +1,30 @@
+<!-- <div id="popup" class="ol-popup">
+ <a href="#" class="ol-popup-closer" id="popup-closer">x</a>
+ <div class="ol-popup-content">
+  <h2>{{ selectedVessel?.name }}</h2>
+  <ul>
+   <li>IMO Number: {{ selectedVessel?.imoNumber }}</li>
+   <li>Port From: {{ selectedVessel?.portFrom }}</li>
+   <li>Port To: {{ selectedVessel?.portTo }}</li>
+   <li>Type: {{ selectedVessel?.type }}</li>
+   <li>Arrival Date: {{ selectedVessel?.arrivalDate }}</li>
+   <li>Speed: {{ selectedVessel?.speed }}</li>
+  </ul>
+ </div>
+</div> -->
+<div id="popup" class="ol-popup">
+ <a href="#" class="ol-popup-closer" id="popup-closer">
+  <i class="fas fa-times"></i>
+ </a>
+ <div class="ol-popup-content">
+  <h2>{{ selectedVessel?.name }}</h2>
+  <ul>
+   <li><i class="fas fa-ship"></i> IMO Number: {{ selectedVessel?.imoNumber }}</li>
+   <li><i class="fas fa-map-marker-alt"></i> Port From: {{ selectedVessel?.portFrom }}</li>
+   <li><i class="fas fa-map-marker-alt"></i> Port To: {{ selectedVessel?.portTo }}</li>
+   <li><i class="fas fa-ship"></i> Type: {{ selectedVessel?.type }}</li>
+   <li><i class="fas fa-calendar-alt"></i> Arrival Date: {{ selectedVessel?.arrivalDate }}</li>
+   <li><i class="fas fa-tachometer-alt"></i> Speed: {{ selectedVessel?.speed }}</li>
+  </ul>
+ </div>
+</div>

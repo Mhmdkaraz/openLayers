@@ -1,0 +1,103 @@
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.tables-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.table {
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.data-table {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.form-fields-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.mat-form-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .form-fields-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-fields {
+    flex-direction: column;
+  }
+
+  .mat-form-field {
+    min-width: unset;
+    width: 90%;
+  }
+
+  .tables-container {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: unset;
+  }
+
+  .table {
+    width: 90%;
+    margin: 10px auto;
+    overflow-x: auto;
+  }
+
+  .responsive-table {
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+
+  .data-table {
+    width: 100%;
+    margin: 20px auto;
+  }
+}

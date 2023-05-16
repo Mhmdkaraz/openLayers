@@ -1,0 +1,93 @@
+<div class="mat-elevation-z8 data-table">
+ <form (ngSubmit)="applyFilter()" class="form-fields-container">
+  <div class="form-fields">
+   <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="status" name="status" placeholder="Status" multiple>
+     <mat-option *ngFor="let statusOption of eventStatusOptions" [value]="statusOption">{{ statusOption }}</mat-option>
+    </mat-select>
+   </mat-form-field>
+   <mat-form-field>
+    <mat-label>Port</mat-label>
+    <mat-select [(ngModel)]="port" name="port" placeholder="Port" multiple>
+     <mat-option *ngFor="let portOption of portOptions" [value]="portOption">{{ portOption }}</mat-option>
+    </mat-select>
+   </mat-form-field>
+   <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="date" name="date" placeholder="Date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+   </mat-form-field>
+   <div class="example-button-container">
+    <button mat-raised-button color="primary" type="submit">Apply</button>
+   </div>
+  </div>
+ </form>
+
+ <div class="tables-container">
+  <div class="table">
+   <table>
+    <tr>
+     <th *ngFor="let statusCount of eventStatusCounts">{{ statusCount[0] }}</th>
+    </tr>
+    <tr>
+     <td *ngFor="let statusCount of eventStatusCounts">{{ statusCount[1] }}</td>
+    </tr>
+   </table>
+  </div>
+
+  <div class="table">
+   <table>
+    <tr>
+     <th *ngFor="let portCount of portNameCounts">{{ portCount[0] }}</th>
+    </tr>
+    <tr>
+     <td *ngFor="let portCount of portNameCounts">{{ portCount[1] }}</td>
+    </tr>
+   </table>
+  </div>
+ </div>
+
+ <table mat-table matSort [dataSource]="dataSource" class="responsive-table">
+  <ng-container matColumnDef="EVENT_ID">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell">Event Id</th>
+   <td mat-cell *matCellDef="let event">{{ event.EVENT_ID }}</td>
+  </ng-container>
+  <ng-container matColumnDef="EVENT_STATUS">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell">Event Status</th>
+   <td mat-cell *matCellDef="let event">{{ event.EVENT_STATUS }}</td>
+  </ng-container>
+  <ng-container matColumnDef="SHORT_DESCRIPTION">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell">Short Description</th>
+   <td mat-cell *matCellDef="let event">{{ event.SHORT_DESCRIPTION }}</td>
+  </ng-container>
+  <ng-container matColumnDef="INSERT_DATE">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell">Insert Date</th>
+   <td mat-cell *matCellDef="let event">{{ event.INSERT_DATE }}</td>
+  </ng-container>
+  <ng-container matColumnDef="COLD_IRONING_PORT">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell">COLD IRONING PORT</th>
+   <td mat-cell *matCellDef="let event">{{ event.COLD_IRONING_PORT }}</td>
+  </ng-container>
+  <ng-container matColumnDef="SAILING_TO_ETA">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell">SAILING TO ETA</th>
+   <td mat-cell *matCellDef="let event">{{ event.SAILING_TO_ETA }}</td>
+  </ng-container>
+  <ng-container matColumnDef="SAILING_TO" class="mat-header-cell">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell">SAILING TO</th>
+   <td mat-cell *matCellDef="let event">{{ event.SAILING_TO }}</td>
+  </ng-container>
+  <ng-container matColumnDef="EOSP_PORT">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell">EOSP PORT</th>
+   <td mat-cell *matCellDef="let event">{{ event.EOSP_PORT }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+ </table>
+ <mat-paginator #paginator [length]="dataSource?.data?.length" [pageIndex]="0" [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+ </mat-paginator>
+</div>
