@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { PopupComponent } from './popup/popup.component';
-import { VesselLayerComponent } from './vessel-layer/vessel-layer.component';
+// import { VesselLayerComponent } from './vessel-layer/vessel-layer.component';
 import { FormsModule } from '@angular/forms';
 import { EventsComponent } from './events/events.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatListModule} from '@angular/material/list'
+import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EventsDataService } from './events/events-data.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -30,13 +30,17 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { PortsComponent } from './ports/ports.component';
 import { PortsClient } from './ports/ports.client';
 import { PortsService } from './ports/ports.service';
+import { VesselsService } from './vessels/vessels.service';
+import { VesselsClient } from './vessels/vessels.client';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     PopupComponent,
-    VesselLayerComponent,
     EventsComponent,
     SidenavComponent,
     PortsComponent,
@@ -44,6 +48,7 @@ import { PortsService } from './ports/ports.service';
   imports: [
     BrowserModule,
     FormsModule,
+    MatDialogModule,
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
@@ -63,8 +68,17 @@ import { PortsService } from './ports/ports.service';
     MatListModule,
     BrowserAnimationsModule,
     LayoutModule,
+    MatSnackBarModule,
   ],
-  providers: [EventsDataService, EventsClient, PortsService, PortsClient],
+  providers: [
+    EventsDataService,
+    EventsClient,
+    PortsService,
+    PortsClient,
+    VesselsService,
+    VesselsClient,
+    MatSnackBar,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

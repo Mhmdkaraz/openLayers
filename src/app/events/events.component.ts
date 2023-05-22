@@ -37,17 +37,9 @@ export class EventsComponent implements OnInit {
     this.dataSource = new MatTableDataSource<any>([]);
   }
   ngOnInit() {
-    // this.eventsDataService.fetchEventsData().subscribe((data) => {
-    //   this.dataSource = new MatTableDataSource(data);
-    //   this.dataSource.sort = this.sort;
-    //   this.dataSource.paginator = this.paginator;
-    //   this.eventStatusCounts =
-    //     this.eventsDataService.calculateEventStatusCounts(data);
-    //   this.portNameCounts = this.eventsDataService.calculateNumberPorts(data);
-    // });
     this.getEventsData();
   }
-  getEventsData() {
+  public getEventsData() {
     this.eventsDataService
       .fetchEventsData(this.status.join(','), this.port.join(','), this.date)
       .subscribe((data) => {
@@ -60,7 +52,7 @@ export class EventsComponent implements OnInit {
       });
   }
 
-  applyFilter() {
+  public applyFilter() {
     this.getEventsData();
   }
 }

@@ -1,0 +1,40 @@
+.container {
+  width: 90%;
+  margin: 11px auto;
+  background: linear-gradient(to bottom, #99b3cc, #f2fbff);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: right;
+}
+.form-field {
+  margin-bottom: 20px;
+  width: 100%;
+}
+h2{
+  text-align: left;
+  color: #f2fbff;
+}
+.mat-input-element {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+.mat-select {
+  width: 100%;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 20px 0;
+  margin: auto;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}

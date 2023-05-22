@@ -1,0 +1,26 @@
+<div class="container">
+ <h2>New Vessel</h2>
+ <form [formGroup]="vesselForm" (ngSubmit)="onSubmit()" class="form">
+  <mat-form-field class="form-field">
+   <mat-label>IMO Number</mat-label>
+   <input matInput formControlName="imoNumber" type="number" required min="1">
+   <mat-error *ngIf="vesselForm.get('imoNumber').hasError('required')">IMO Number is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+   <mat-label>Vessel Name</mat-label>
+   <input matInput formControlName="vesselName" type="text" required>
+   <mat-error *ngIf="vesselForm.get('vesselName').hasError('required')">Vessel Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+   <mat-label>Country</mat-label>
+   <mat-select formControlName="country" required>
+    <mat-option *ngFor="let country of countries" [value]="country">{{ country }}</mat-option>
+   </mat-select>
+   <mat-error *ngIf="vesselForm.get('country').hasError('required')">Country is required</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="vesselForm.invalid">Submit</button>
+ </form>
+</div>
