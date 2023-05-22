@@ -1,12 +1,13 @@
-<mat-sidenav-container class="sidenav-container">
+<!-- <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" [ngClass]="{hidden: !(isHandset | async)!.matches}" fixedInViewport="false"
     [attr.role]="(isHandset | async) ? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
     [opened]="!(isHandset | async)!.matches">
-    <mat-toolbar>Open Layers</mat-toolbar>
+    <mat-toolbar>Vessels Tracking</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/maps" routerLinkActive="active">Map</a>
       <a mat-list-item routerLink="/events" routerLinkActive="active">Events</a>
       <a mat-list-item routerLink="/ports" routerLinkActive="active">Ports</a>
+      <a mat-list-item routerLink="/vessels/" routerLinkActive="active">Vessels</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -15,13 +16,189 @@
         *ngIf="(isHandset | async)!.matches">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Open Layers</span>
+      <span>Vessels Tracking</span>
       <span class="spacer"></span>
       <a routerLink="/maps" routerLinkActive="active" class="nav-link" *ngIf="!(isHandset | async)!.matches">Map</a>
       <a routerLink="/events" routerLinkActive="active" class="nav-link"
         *ngIf="!(isHandset | async)!.matches">Events</a>
       <a routerLink="/ports" routerLinkActive="active" class="nav-link" *ngIf="!(isHandset | async)!.matches">Ports</a>
+      <a routerLink="/vessels/" routerLinkActive="active" class="nav-link" *ngIf="!(isHandset | async)!.matches">Vessels</a>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" [attr.role]="'dialog'" [mode]="'side'">
+    <mat-toolbar>Vessels Tracking</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/maps" routerLinkActive="active">Map</a>
+      <a mat-list-item routerLink="/events" routerLinkActive="active">Events</a>
+      <a mat-list-item routerLink="/ports" routerLinkActive="active">Ports</a>
+      <a mat-list-item routerLink="/vessels/" routerLinkActive="active">Vessels</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Vessels Tracking</span>
+      <span class="spacer"></span>
+      <a routerLink="/maps" routerLinkActive="active" class="nav-link">Map</a>
+      <a routerLink="/events" routerLinkActive="active" class="nav-link">Events</a>
+      <a routerLink="/ports" routerLinkActive="active" class="nav-link">Ports</a>
+      <a routerLink="/vessels/" routerLinkActive="active" class="nav-link">Vessels</a>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" [attr.role]="'dialog'" [mode]="'side'">
+    <mat-toolbar>Vessels Tracking</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/maps" routerLinkActive="active">
+        <mat-icon>map</mat-icon>
+        <span>Map</span>
+      </a>
+      <a mat-list-item routerLink="/events" routerLinkActive="active">
+        <mat-icon>event</mat-icon>
+        <span>Events</span>
+      </a>
+      <a mat-list-item routerLink="/ports" routerLinkActive="active">
+        <mat-icon>location_city</mat-icon>
+        <span>Ports</span>
+      </a>
+      <a mat-list-item routerLink="/vessels/" routerLinkActive="active">
+        <mat-icon>directions_boat</mat-icon>
+        <span>Vessels</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Vessels Tracking</span>
+      <span class="spacer"></span>
+      <a routerLink="/maps" routerLinkActive="active" class="nav-link">
+        <mat-icon>map</mat-icon>
+        <span>Register</span>
+      </a>
+      <a routerLink="/events" routerLinkActive="active" class="nav-link">
+        <mat-icon>event</mat-icon>
+        <span>Events</span>
+      </a>
+      <a routerLink="/ports" routerLinkActive="active" class="nav-link">
+        <mat-icon>location_city</mat-icon>
+        <span>Ports</span>
+      </a>
+      <a routerLink="/vessels/" routerLinkActive="active" class="nav-link">
+        <mat-icon>directions_boat</mat-icon>
+        <span>Vessels</span>
+      </a>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+<!-- 
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" [attr.role]="'dialog'" [mode]="'side'">
+    <mat-toolbar>Vessels Tracking</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/maps" routerLinkActive="active">
+        <mat-icon>map</mat-icon>
+        <span>Map</span>
+      </a>
+      <a mat-list-item routerLink="/events" routerLinkActive="active">
+        <mat-icon>event</mat-icon>
+        <span>Events</span>
+      </a>
+      <a mat-list-item routerLink="/ports" routerLinkActive="active">
+        <mat-icon>location_city</mat-icon>
+        <span>Ports</span>
+      </a>
+      <a mat-list-item routerLink="/vessels/" routerLinkActive="active">
+        <mat-icon>directions_boat</mat-icon>
+        <span>Vessels</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Vessels Tracking</span>
+      <span class="spacer"></span>
+      <a routerLink="/maps" routerLinkActive="active" class="nav-link">
+        <mat-icon>map</mat-icon>
+        <span>Map</span>
+      </a>
+      <a routerLink="/events" routerLinkActive="active" class="nav-link">
+        <mat-icon>event</mat-icon>
+        <span>Events</span>
+      </a>
+      <a routerLink="/ports" routerLinkActive="active" class="nav-link">
+        <mat-icon>location_city</mat-icon>
+        <span>Ports</span>
+      </a>
+      <a routerLink="/vessels/" routerLinkActive="active" class="nav-link">
+        <mat-icon>directions_boat</mat-icon>
+        <span>Vessels</span>
+      </a>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+<div class="sidebar" [ngClass]="{ 'open': isSidebarOpen }">
+  <div class="logo-details">
+    <div class="logo_name">ShipTracking</div>
+    <i class="bx bx-menu" id="btn" (click)="toggleSidebar()"></i>
+  </div>
+  <ul class="nav-list">
+    <li>
+      <a routerLink="/maps" routerLinkActive="active">
+        <i class="bx bx-map"></i>
+        <span class="links_name">Map</span>
+      </a>
+      <span class="tooltip">Map</span>
+    </li>
+    <li>
+      <a routerLink="/events" routerLinkActive="active">
+        <i class="bx bx-calendar-event"></i>
+        <span class="links_name">Events</span>
+      </a>
+      <span class="tooltip">Events</span>
+    </li>
+    <li>
+      <a routerLink="/vessels" routerLinkActive="active">
+        <i class="bx bxs-ship"></i>
+        <span class="links_name">Vessels</span>
+      </a>
+      <span class="tooltip">Vessels</span>
+    </li>
+    <li>
+      <a routerLink="/ports" routerLinkActive="active">
+          <i class="bx bx-buildings"></i>
+        <span class="links_name">Ports</span>
+      </a>
+      <span class="tooltip">Ports</span>
+    </li>
+    <li class="profile">
+      <div class="profile-details">
+        <!-- <img src="profile.jpg" alt="profileImg" /> -->
+        <div class="name_job">
+          <div class="name">Prem Shahi</div>
+          <div class="job">Web designer</div>
+        </div>
+      </div>
+      <i class="bx bx-log-out" id="log_out"></i>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <ng-content></ng-content>
+</section>

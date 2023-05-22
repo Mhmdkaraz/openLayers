@@ -5,6 +5,11 @@ import { MapComponent } from './map/map.component';
 import { PortsComponent } from './ports/ports.component';
 
 const routes: Routes = [
+  {
+    path: 'vessels',
+    loadChildren: () =>
+      import('./vessels/vessels.module').then((m) => m.VesselsModule),
+  },
   { path: 'maps', component: MapComponent },
   { path: 'events', component: EventsComponent },
   { path: 'ports', component: PortsComponent },

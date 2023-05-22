@@ -24,11 +24,8 @@ export class PortsComponent implements OnInit {
     this.dataSource = new MatTableDataSource<any>([]);
   }
   ngOnInit(): void {
-    this.getPortsData();
-  }
-  getPortsData() {
-    this.portsService.getPortsData().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+    this.portsService.getPortsDataObservable().subscribe((data) => {
+      this.dataSource.data = data;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
