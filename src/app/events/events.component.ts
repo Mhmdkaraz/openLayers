@@ -15,7 +15,7 @@ export class EventsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   status: string[] = [];
   port: string[] = [];
-  date: Date | null = null; // Change to Date type
+  date: Date | null = null;
 
   eventStatusOptions: string[] = ['FEEDBACK', 'SOLVED', 'NEW', 'PROCESSING'];
   portOptions: string[] = ['USLAX', 'CNSHA', 'USLGB', 'USOAK'];

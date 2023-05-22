@@ -12,7 +12,7 @@
   })
   export class VesselLayerComponent implements OnInit{
     @Input() map: Map;
-
+    
     ngOnInit(): void {
       const vesselLayer = new VectorLayer({
         source: new VectorSource({

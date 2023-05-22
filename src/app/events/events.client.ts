@@ -18,7 +18,7 @@ export class EventsClient {
     port?: string,
     date?: Date
   ): Observable<any[]> {
-    const url = `${this.apiUrl}/events/get_events.php`;
+    const url = `${this.apiUrl}/api/get_events.php`;
     const Date = moment(date);
     console.log(Date);
     var formattedDate = Date.format('DD/MM/YYYY').toUpperCase();

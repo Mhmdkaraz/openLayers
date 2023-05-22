@@ -27,6 +27,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { PortsComponent } from './ports/ports.component';
+import { PortsClient } from './ports/ports.client';
+import { PortsService } from './ports/ports.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     VesselLayerComponent,
     EventsComponent,
     SidenavComponent,
+    PortsComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     BrowserAnimationsModule,
     LayoutModule,
   ],
-  providers: [EventsDataService, EventsClient],
+  providers: [EventsDataService, EventsClient, PortsService, PortsClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
