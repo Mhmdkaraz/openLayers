@@ -15,16 +15,14 @@ import { VesselsFormComponent } from './vessels-form/vessels-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDialogModule,MatDialog } from '@angular/material/dialog';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { EditVesselFormComponent } from './edit-vessel-form/edit-vessel-form.component';
-import { VesselLayerComponent } from './vessel-layer/vessel-layer.component';
 @NgModule({
   declarations: [
     VesselsTableComponent,
-    VesselLayerComponent,
     VesselsFormComponent,
     ConfirmationDialogComponent,
     EditVesselFormComponent,
