@@ -28,4 +28,7 @@ export class VesselsService {
   public deleteVessel(imoNumber: number): Observable<any> {
     return this.vesselsClient.deleteVessel(imoNumber);
   }
+  public updateVessel(vessel: any): Observable<any> {
+    return this.vesselsClient.updateVessel(vessel);
+  }
 }

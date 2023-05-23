@@ -35,6 +35,8 @@ import { VesselsClient } from './vessels/vessels.client';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { VesselLayerComponent } from './vessels/vessel-layer/vessel-layer.component';
+import { PortPopupComponent } from './port-popup/port-popup.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
     EventsComponent,
     SidenavComponent,
     PortsComponent,
+    VesselLayerComponent,
+    PortPopupComponent,
   ],
   imports: [
     BrowserModule,

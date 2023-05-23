@@ -14,8 +14,10 @@ import { transform } from 'ol/proj';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import { VesselsService } from '../vessels/vessels.service';
-import Collection from 'ol/Collection';
-import { DragAndDrop } from 'ol/interaction';
+import Drag from '../Drag';
+import MapBrowserEvent from 'ol/MapBrowserEvent';
+import { Port } from 'src/shared/port.model';
+import { PortPopupComponent } from '../port-popup/port-popup.component';
 
 @Component({
   selector: 'app-map',
@@ -25,7 +27,12 @@ import { DragAndDrop } from 'ol/interaction';
 export class MapComponent implements OnInit {
   public map: Map;
   public selectedVessel: Vessel;
+  public selectedPort: Port;
+  public drag: Drag;
+  public portLayer: any;
+  public vesselLayer: any;
   @ViewChild('popup') popup: PopupComponent;
+  @ViewChild('portPopup') portPopup: PortPopupComponent;
 
   constructor(
     private portsService: PortsService,
@@ -46,8 +53,6 @@ export class MapComponent implements OnInit {
         constrainResolution: true,
         center: [0, 0],
         zoom: 7,
-        // maxZoom: 10,
-        // minZoom: 5,
         rotation: 0.5,
       }),
       layers: [stamenTerrain],
@@ -55,22 +60,39 @@ export class MapComponent implements OnInit {
     });
     this.map.on('click', (event) => {
       this.map.forEachFeatureAtPixel(event.pixel, (feature) => {
-        const features = feature.getProperties().properties;
-        const { name, imoNumber, portFrom, portTo, type, arrivalDate, speed } =
-          feature.getProperties().properties;
-        this.selectedVessel = new Vessel(
-          name,
-          imoNumber,
-          portFrom,
-          portTo,
-          type,
-          arrivalDate,
-          speed
-        );
-        this.popup.selectedVessel = this.selectedVessel;
-        this.popup.overlay.setPosition(event.coordinate);
+        const { type } = feature.getProperties();
+        console.log(type);
+        if (type === 'vessel') {
+          const { imoNumber, vesselName, country, latitude, longitude, speed,timeOfPosition } =
+            feature.getProperties();
+          this.selectedVessel = new Vessel(
+            imoNumber,
+            vesselName,
+            country,
+            latitude,
+            longitude,
+            speed,
+            timeOfPosition
+          );
+          this.popup.selectedVessel = this.selectedVessel;
+          this.popup.overlay.setPosition(event.coordinate);
+        } else if (type === 'port') {
+          const { portCode, portName, city, country, latitude, longitude } =
+            feature.getProperties();
+          this.selectedPort = new Port(
+            portCode,
+            portName,
+            city,
+            country,
+            latitude,
+            longitude
+          );
+          this.portPopup.selectedPort = this.selectedPort;
+          this.portPopup.portOverlay.setPosition(event.coordinate);
+        }
       });
     });
+
     this.portsService.getPortsDataObservable().subscribe((ports) => {
       ports.forEach((port) => {
         const [lon, lat] = transform(
@@ -80,7 +102,15 @@ export class MapComponent implements OnInit {
         );
         const point = new Point([lon, lat]);
         const feature = new Feature(point);
-
+        feature.setProperties({
+          type: 'port',
+          portCode: port.PORT_CODE,
+          portName: port.PORT_NAME,
+          city: port.CITY,
+          country: port.COUNTRY,
+          latitude: port.LATITUDE,
+          longitude: port.LONGITUDE,
+        });
         const portLayer = new VectorLayer({
           source: new VectorSource({
             features: [feature],
@@ -95,50 +125,6 @@ export class MapComponent implements OnInit {
           },
         });
         this.map.addLayer(portLayer);
-      });
-    });
-    this.vesselsService.getVesselsDataObservable().subscribe((vessels) => {
-      vessels.forEach((vessel) => {
-        const [lon, lat] = transform(
-          [vessel.LONGITUDE, vessel.LATITUDE],
-          'EPSG:4326',
-          'EPSG:900913'
-        );
-        const point = new Point([lon, lat]);
-        const feature = new Feature(point);
-
-        const vesselLayer = new VectorLayer({
-          source: new VectorSource({
-            features: [feature],
-          }),
-          style: (feature, resolution) => {
-            const iconStyle = new Style({
-              image: new Icon({
-                src: '../../../assets/icons/vessel.png',
-              }),
-            });
-            this.updateIconScale(vesselLayer, iconStyle);
-          },
-        });
-        // const dragInteraction = new DragAndDrop({
-        //   source: new VectorSource({
-        //     features: new Collection([feature]),
-        //   }),
-        // });
-        // console.log(dragInteraction);
-        // this.map.addInteraction(dragInteraction);
-        //  dragInteraction.on('translateend', (event) => {
-        //    const coords = event.features
-        //      .getArray()[0]
-        //      .getGeometry()
-        //      .getCoordinates();
-        //    const [lon, lat] = transform(coords, 'EPSG:900913', 'EPSG:4326');
-        //    vessel.LONGITUDE = lon;
-        //    vessel.LATITUDE = lat;
-        // Call your service method to update the vessel's coordinates
-        //  });
-
-        this.map.addLayer(vesselLayer);
       });
     });
   }

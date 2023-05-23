@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { Vessel } from 'src/shared/vessel.model';
+import { EditVesselFormComponent } from '../edit-vessel-form/edit-vessel-form.component';
 
 @Component({
   selector: 'app-vessels',
@@ -46,6 +48,40 @@ export class VesselsTableComponent implements OnInit {
   navigateToVesselForm(): void {
     this.router.navigate(['/vessels/add']);
   }
+  editVessel(imoNumber: number): void {
+    const vessel = this.dataSource.data.find(
+      (vessel) => vessel.IMO_NUMBER === imoNumber
+    );
+    if (vessel) {
+      const dialogRef = this.dialog.open(EditVesselFormComponent, {
+        width: '400px',
+        data: vessel,
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.updateVessel(result);
+        }
+      });
+    }
+  }
+  updateVessel(vessel: any): void {
+    this.vesselsService.updateVessel(vessel).subscribe(
+      () => {
+        this.snackBar.open('Vessel updated successfully.', 'Close', {
+          duration: 3000,
+          panelClass: ['success-snackbar'],
+        });
+        this.vesselsService.getVesselsData();
+      },
+      (error) => {
+        this.snackBar.open('Failed to update vessel.', 'Close', {
+          duration: 3000,
+          panelClass: ['error-snackbar'],
+        });
+      }
+    );
+  }
   deleteVessel(vessel: any): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '300px',
@@ -63,7 +99,6 @@ export class VesselsTableComponent implements OnInit {
               duration: 3000,
               panelClass: ['success-snackbar'],
             });
-            // Refresh the vessel data
             this.vesselsService.getVesselsData();
           },
           (error) => {
