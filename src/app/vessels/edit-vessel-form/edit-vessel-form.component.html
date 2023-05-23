@@ -1,0 +1,36 @@
+<div id="form-container">
+ <h2>Edit Vessel {{vessel.imoNumber}}</h2>
+ <form class="form-grid">
+  <mat-form-field class="form-field">
+   <mat-label>Vessel Name</mat-label>
+   <input matInput [(ngModel)]="vessel.vesselName" name="vesselName">
+  </mat-form-field>
+  <mat-form-field class="form-field">
+   <mat-label>Country</mat-label>
+   <mat-select name="country" required [(ngModel)]="vessel.country">
+    <mat-option *ngFor="let country of countries" [value]="country">{{ country }}</mat-option>
+   </mat-select>
+  </mat-form-field>
+  <mat-form-field class="form-field">
+   <mat-label>Latitude</mat-label>
+   <input matInput type="number" required step="any" [(ngModel)]="vessel.latitude" name="latitude">
+  </mat-form-field>
+  <mat-form-field class="form-field">
+   <mat-label>Longitude</mat-label>
+   <input matInput type="number" required step="any" [(ngModel)]="vessel.longitude" name="longitude">
+  </mat-form-field>
+  <mat-form-field class="form-field">
+   <mat-label>Speed</mat-label>
+   <input matInput type="number" required step="any" [(ngModel)]="vessel.speed" name="speed">
+  </mat-form-field>
+  <mat-form-field class="form-field">
+   <mat-label>Time of Position</mat-label>
+   <input matInput type="datetime-local" required [(ngModel)]="vessel.timeOfPosition" name="timeOfPosition">
+  </mat-form-field>
+
+  <div class="button-container">
+   <button mat-button color="primary" (click)="save()">Save</button>
+   <button mat-button (click)="cancel()">Cancel</button>
+  </div>
+ </form>
+</div>

@@ -20,4 +20,8 @@ export class VesselsClient {
     const url = `${this.apiUrl}/api/delete_vessel.php`;
     return this.http.post<any>(url, { imoNumber });
   }
+  public updateVessel(vessel: any): Observable<any> {
+    const url = `${this.apiUrl}/api/update_vessel.php`;
+    return this.http.post<any>(url, vessel);
+  }
 }
