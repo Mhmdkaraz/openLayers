@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PortsService } from './ports/ports.service';
 import { VesselsService } from './vessels/vessels.service';
+import { TripService } from './trip/trip.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,11 @@ import { VesselsService } from './vessels/vessels.service';
 export class AppComponent implements OnInit {
   constructor(
     private portsService: PortsService,
-    private vesselsService: VesselsService
+    private vesselsService: VesselsService,
+    private tripsService: TripService
   ) {}
   ngOnInit(): void {
     this.portsService.getPortsData();
-    this.vesselsService.getVesselsData();
+    this.tripsService.getTripsData();
   }
 }

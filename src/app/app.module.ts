@@ -37,6 +37,8 @@ import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { VesselLayerComponent } from './vessels/vessel-layer/vessel-layer.component';
 import { PortPopupComponent } from './port-popup/port-popup.component';
+import { TripsClient } from './trip/trip.client';
+import { TripService } from './trip/trip.service';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { PortPopupComponent } from './port-popup/port-popup.component';
     PortsClient,
     VesselsService,
     VesselsClient,
+    TripsClient,
+    TripService,
     MatSnackBar,
   ],
   bootstrap: [AppComponent],

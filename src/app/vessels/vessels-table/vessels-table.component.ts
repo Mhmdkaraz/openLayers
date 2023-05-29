@@ -6,8 +6,7 @@ import { VesselsService } from '../vessels.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { Vessel } from 'src/shared/vessel.model';
+import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
 import { EditVesselFormComponent } from '../edit-vessel-form/edit-vessel-form.component';
 
 @Component({

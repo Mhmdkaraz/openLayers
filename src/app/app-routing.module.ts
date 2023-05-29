@@ -10,6 +10,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./vessels/vessels.module').then((m) => m.VesselsModule),
   },
+  {
+    path: 'trip',
+    loadChildren: () => import('./trip/trip.module').then((m) => m.TripModule),
+  },
   { path: 'maps', component: MapComponent },
   { path: 'events', component: EventsComponent },
   { path: 'ports', component: PortsComponent },

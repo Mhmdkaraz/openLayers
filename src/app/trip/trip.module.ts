@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { VesselsRoutingModule } from './vessels-routing.module';
-
+import { TripRoutingModule } from './trip-routing.module';
+import { TripFormComponent } from './trip-form/trip-form.component';
+import { TripsTableComponent } from './trips-table/trips-table.component';
+import { TripService } from './trip.service';
+import { TripsClient } from './trip.client';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -10,40 +13,29 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { VesselsTableComponent } from './vessels-table/vessels-table.component';
-import { VesselsFormComponent } from './vessels-form/vessels-form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { EditVesselFormComponent } from './edit-vessel-form/edit-vessel-form.component';
 @NgModule({
-  declarations: [
-    VesselsTableComponent,
-    VesselsFormComponent,
-    ConfirmationDialogComponent,
-    EditVesselFormComponent,
-  ],
+  declarations: [TripFormComponent, TripsTableComponent],
   imports: [
     CommonModule,
-    FormsModule,
-    VesselsRoutingModule,
+    ReactiveFormsModule,
+    TripRoutingModule,
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
-    ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    ReactiveFormsModule,
     MatInputModule,
     MatSnackBarModule,
     MatSelectModule,
     MatDialogModule,
   ],
-  providers: [MatDialog, MatSnackBar],
+  providers: [],
 })
-export class VesselsModule {}
+export class TripModule {}
