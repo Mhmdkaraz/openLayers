@@ -1,10 +1,10 @@
 <div class="container">
- <form [formGroup]="tripForm" (ngSubmit)="addTrip()" class="form-grid">
+ <form [formGroup]="tripForm" (ngSubmit)="updateTrip()" class="form-grid">
   <div class="form-row">
    <div class="form-group full-width">
-    <label for="imoNumber">IMO Number:</label>
+    <label for="imoNumber">Vessel:</label>
     <select id="imoNumber" formControlName="imoNumber">
-     <option value="">Select Vessel</option>
+     <option [value]="assignedVessel['imoNumber']">{{ assignedVessel['vesselName'] }}</option>
      <option *ngFor="let vessel of vessels" [value]="vessel.IMO_NUMBER">{{ vessel.VESSEL_NAME }}</option>
     </select>
    </div>
@@ -12,7 +12,7 @@
   <div class="form-row">
    <div class="form-group full-width">
     <label for="tripName">Trip Name:</label>
-     <input type="text" id="tripName" formControlName="tripName">
+    <input type="text" id="tripName" formControlName="tripName">
    </div>
   </div>
   <div class="form-row">
@@ -31,7 +31,6 @@
     </select>
    </div>
   </div>
-
   <div formArrayName="segments">
    <div *ngFor="let segment of segments.controls; let segmentIndex = index" class="segment-row">
     <div [formGroupName]="segmentIndex" class="segment-container">
@@ -41,17 +40,15 @@
        <i class='bx bx-minus-circle'></i>
       </button>
      </div>
-
      <div formArrayName="positions" class="position-container">
       <div *ngFor="let position of segment.get('positions').controls; let positionIndex = index" class="position-row">
        <div [formGroupName]="positionIndex" class="position-input">
-        <label for="lat">Latitude:</label>
-        <input type="text" id="lat" formControlName="lat">
-        <label for="lon">Longitude:</label>
-        <input type="text" id="lon" formControlName="lon">
-        <button type="button" (click)="removePosition(segmentIndex, positionIndex)" class="remove-icon red">
-         <i class='bx bx-minus-circle'></i>
-        </button>
+        <label for="latitude">Latitude:</label>
+        <input type="number" id="latitude" formControlName="latitude" />
+        <label for="longitude">Longitude:</label>
+        <input type="number" id="longitude" formControlName="longitude" />
+        <button (click)="removePosition(segmentIndex, positionIndex)" class="remove-icon red"> <i
+          class='bx bx-minus-circle'></i></button>
        </div>
       </div>
       <button type="button" (click)="addPosition(segmentIndex)" class="add-position-btn green">
@@ -61,13 +58,11 @@
     </div>
    </div>
    <button type="button" (click)="addSegment()" class="add-segment-btn green">
-   <i class='bx bx-plus-circle'></i>
+    <i class='bx bx-plus-circle'></i>
    </button>
   </div>
-
-  <button type="submit" class="add-trip-btn">Add Trip</button>
+  <button type="submit" class="update-trip-btn">Update Trip</button>
  </form>
-
  <div id="map" class="map"></div>
  <div id="position-marker" class="position-marker">
   <div id="marker-dot" class="marker-dot"></div>

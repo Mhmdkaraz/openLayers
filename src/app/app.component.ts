@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
     private tripsService: TripService
   ) {}
   ngOnInit(): void {
+    this.vesselsService.getVesselsData();
     this.portsService.getPortsData();
     this.tripsService.getTripsData();
   }

@@ -26,7 +26,6 @@ export class VesselsTableComponent implements OnInit {
     'LONGITUDE',
     'TIMEOFPOSITION',
     'SPEED',
-    'NUM_TRIPS',
     'Actions',
   ];
   constructor(

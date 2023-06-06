@@ -10,7 +10,7 @@ import { transform } from 'ol/proj';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import { Vessel } from 'src/shared/vessel.model';
-import Drag from '../../Drag';
+
 @Component({
   selector: 'app-vessel-layer',
   templateUrl: './vessel-layer.component.html',
@@ -18,7 +18,7 @@ import Drag from '../../Drag';
 })
 export class VesselLayerComponent implements OnInit {
   @Input() map: Map;
-  drag: any;
+ 
   constructor(private vesselsService: VesselsService) {}
   ngOnInit(): void {
     this.vesselsService.getVesselsDataObservable().subscribe((vessels) => {
@@ -54,28 +54,10 @@ export class VesselLayerComponent implements OnInit {
             this.updateIconScale(vesselLayer, iconStyle);
           },
         });
-
+        vesselLayer.set('title', 'vessel');
         this.map.addLayer(vesselLayer);
       });
     });
-    // const dragInteraction = new Drag();
-    //    dragInteraction.addChangeListener(
-    //      'pointerdown',
-    //      (event: MapBrowserEvent<UIEvent>) => this.drag.handleDownEvent(event)
-    //    );
-    //    dragInteraction.addChangeListener(
-    //      'pointerdrag',
-    //      (event: MapBrowserEvent<UIEvent>) => this.drag.handleDragEvent(event)
-    //    );
-    //    dragInteraction.addChangeListener(
-    //      'pointermove',
-    //      (event: MapBrowserEvent<UIEvent>) => this.drag.handleMoveEvent(event)
-    //    );
-    //    dragInteraction.addChangeListener(
-    //      'pointerup',
-    //      (event: MapBrowserEvent<UIEvent>) => this.drag.handleUpEvent(event)
-    //    );
-    //    this.map.addInteraction(dragInteraction);
   }
   private updateIconScale(layer: any, iconStyle: any) {
     layer.setStyle((feature, resolution) => {

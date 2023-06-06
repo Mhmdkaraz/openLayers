@@ -129,7 +129,7 @@ form button[type="button"] {
   color: #fff;
 }
 
-.add-trip-btn {
+.update-trip-btn {
   background-color: #99b3cc;
   color: #000;
   border: none;
@@ -146,7 +146,7 @@ form button[type="button"] {
   background-color: #f2f2f2;
   margin-top: 20px;
 }
-.ol-attribution{
+.ol-attribution {
   display: none !important;
 }
 .position-marker {

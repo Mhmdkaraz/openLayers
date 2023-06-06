@@ -6,4 +6,28 @@
   height: 100vh;
   width: 100%;
   /* margin-top: 50px; */
+  position: relative;
+}
+/* .map-container {
+  position: relative;
+} */
+
+.map-select-container {
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  z-index: 1;
+}
+
+.map-select-container select {
+  padding: 8px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #4a4a4a;
+  border: none;
+  border-radius: 4px;
+}
+
+.map-select-container select option {
+  background-color: #4a4a4a;
 }

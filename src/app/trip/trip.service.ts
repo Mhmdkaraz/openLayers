@@ -27,4 +27,10 @@ export class TripService {
   public deleteTrip(tripId: number): Observable<any> {
     return this.tripsClient.deleteTrip(tripId);
   }
+  public getTripDetails(tripId: any): Observable<any> {
+    return this.tripsClient.getTripDetails(tripId);
+  }
+  public updateTrip(tripId: any, updatedTrip: any): Observable<any> {
+    return this.tripsClient.updateTrip(tripId, updatedTrip);
+  }
 }

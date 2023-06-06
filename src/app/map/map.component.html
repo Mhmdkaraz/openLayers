@@ -1,4 +1,23 @@
-<div id="ol-map" class="map-container"></div>
+<!-- <div id="ol-map" class="map-container"></div> -->
+<div id="ol-map" class="map-container">
+ <div class="map-select-container">
+ <mat-form-field>
+  <mat-label>Select Layers</mat-label>
+  <mat-select [(ngModel)]="selectedLayers" (selectionChange)="onLayerSelectionChange()" multiple>
+   <mat-option value="port">Port</mat-option>
+   <mat-option value="vessel">Vessel</mat-option>
+   <mat-option value="trip">Trip</mat-option>
+  </mat-select>
+ </mat-form-field>
+ </div>
+</div>
 <app-vessel-layer [map]="map"></app-vessel-layer>
+<app-trip-layer [map]="map"></app-trip-layer>
 <app-popup #popup [map]="map" [selectedVessel]="selectedVessel"></app-popup>
 <app-port-popup #portPopup [map]="map" [selectedPort]="selectedPort"></app-port-popup>
+
+<!-- <select [(ngModel)]="selectedLayer" (ngModelChange)="onLayerSelectionChange()">
+ <option value="">None</option>
+ <option value="port">Ports</option>
+ <option value="vessel">Vessels</option>
+</select> -->

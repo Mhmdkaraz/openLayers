@@ -18,9 +18,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { TripEditComponent } from './trip-edit/trip-edit.component';
+
 
 @NgModule({
-  declarations: [TripFormComponent, TripsTableComponent],
+  declarations: [TripFormComponent, TripsTableComponent, TripEditComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

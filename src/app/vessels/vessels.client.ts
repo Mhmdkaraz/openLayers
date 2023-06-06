@@ -13,6 +13,11 @@ export class VesselsClient {
   }
 
   public getVesselsData(): Observable<any[]> {
+    const url = `${this.apiUrl}/api/get_vessels_trip.php`;
+    return this.http.get<any>(url);
+  }
+
+  public getAvailableVesselsData(): Observable<any[]> {
     const url = `${this.apiUrl}/api/get_vessels.php`;
     return this.http.get<any>(url);
   }

@@ -39,6 +39,7 @@ import { VesselLayerComponent } from './vessels/vessel-layer/vessel-layer.compon
 import { PortPopupComponent } from './port-popup/port-popup.component';
 import { TripsClient } from './trip/trip.client';
 import { TripService } from './trip/trip.service';
+import { TripLayerComponent } from './trip/trip-layer/trip-layer.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { TripService } from './trip/trip.service';
     PortsComponent,
     VesselLayerComponent,
     PortPopupComponent,
+    TripLayerComponent,
   ],
   imports: [
     BrowserModule,

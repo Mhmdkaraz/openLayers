@@ -20,4 +20,12 @@ export class TripsClient {
     const url = `${this.apiUrl}/api/delete_trip.php`;
     return this.http.post<any>(url, { tripId });
   }
+  public getTripDetails(tripId: string): Observable<any> {
+    const url = `${this.apiUrl}/api/get_trip_details.php`;
+    return this.http.get<any>(url, { params: { tripId } });
+  }
+  public updateTrip(tripId: any, trip: any): Observable<any> {
+    const url = `${this.apiUrl}/api/update_trip.php`;
+    return this.http.post<any>(url, { tripId, ...trip });
+  }
 }

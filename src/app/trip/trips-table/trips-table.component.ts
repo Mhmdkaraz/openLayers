@@ -46,6 +46,11 @@ export class TripsTableComponent implements OnInit {
   navigateToTripForm(): void {
     this.router.navigate(['/trip/add']);
   }
+  editTrip(trip: any): void {
+    const tripId = trip.TRIP_ID;
+    this.router.navigate(['/trip/edit', tripId]);
+  }
+
   deleteTrip(trip: any): void {
     console.log(trip.TRIP_ID);
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {

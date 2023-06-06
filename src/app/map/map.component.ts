@@ -18,6 +18,7 @@ import Drag from '../Drag';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
 import { Port } from 'src/shared/port.model';
 import { PortPopupComponent } from '../port-popup/port-popup.component';
+import Layer from 'ol/layer/Layer';
 
 @Component({
   selector: 'app-map',
@@ -29,8 +30,9 @@ export class MapComponent implements OnInit {
   public selectedVessel: Vessel;
   public selectedPort: Port;
   public drag: Drag;
-  public portLayer: any;
+  public portLayer;
   public vesselLayer: any;
+  public selectedLayers: string[] = [];
   @ViewChild('popup') popup: PopupComponent;
   @ViewChild('portPopup') portPopup: PortPopupComponent;
 
@@ -63,8 +65,15 @@ export class MapComponent implements OnInit {
         const { type } = feature.getProperties();
         console.log(type);
         if (type === 'vessel') {
-          const { imoNumber, vesselName, country, latitude, longitude, speed,timeOfPosition } =
-            feature.getProperties();
+          const {
+            imoNumber,
+            vesselName,
+            country,
+            latitude,
+            longitude,
+            speed,
+            timeOfPosition,
+          } = feature.getProperties();
           this.selectedVessel = new Vessel(
             imoNumber,
             vesselName,
@@ -115,16 +124,20 @@ export class MapComponent implements OnInit {
           source: new VectorSource({
             features: [feature],
           }),
+          // visible: this.onLayerSelectionChange(),
           style: (feature, resolution) => {
             const iconStyle = new Style({
               image: new Icon({
                 src: '../../../assets/icons/port.jpg',
               }),
             });
+            // console.log(portLayer);
             this.updateIconScale(portLayer, iconStyle);
           },
         });
+        portLayer.set('title', 'port');
         this.map.addLayer(portLayer);
+        // this.portLayer = portLayer;
       });
     });
   }
@@ -133,6 +146,22 @@ export class MapComponent implements OnInit {
     layer.setStyle((feature, resolution) => {
       iconStyle.getImage().setScale(2 / Math.pow(resolution, 1 / 2));
       return iconStyle;
+    });
+  }
+  onLayerSelectionChange() {
+    // console.log(this.selectedLayers.includes('port'));
+    // return this.selectedLayers.includes('port');
+    this.map.getLayers().forEach((layer) => {
+      const layerName = layer.get('title');
+      console.log(layerName);
+      if (
+        layerName === 'StamenTerrain' ||
+        this.selectedLayers.includes(layerName)
+      ) {
+        layer.setVisible(true);
+      } else {
+        layer.setVisible(false);
+      }
     });
   }
 }
